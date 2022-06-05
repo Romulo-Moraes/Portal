@@ -1,0 +1,4 @@
+Microsoft Windows [versÆo 10.0.22000.675]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Users\romul\Desktop\low-level-playground3\tests\test3>Mais? 
