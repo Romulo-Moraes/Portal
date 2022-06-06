@@ -64,7 +64,7 @@ Use: PortalIntegration
 ```txt
 Write to a file in remote target
 
-Use: WriteFile \<relative path in remote computer\>
+Use: WriteFile <relative path in remote computer>
 
 Hint: After send this command (with Python server script) a notepad will pop-up for you write the file text, then you save and press enter in server terminal to send the file content
 ```
@@ -74,7 +74,7 @@ Hint: After send this command (with Python server script) a notepad will pop-up 
 ```txt
 Allow you to read a file in remote computer and bring the result to your terminal
 
-Use: FileRead "\<relative path to remote file\>"
+Use: FileRead "<relative path to remote file>"
 ```
 
 
@@ -82,7 +82,7 @@ Use: FileRead "\<relative path to remote file\>"
 ```txt
 List the current directory or any path that you pass as argument
 
-Use: ListDirectory . (or) \<custom path\>
+Use: ListDirectory . (or) <custom path>
 ```
 
 
@@ -90,7 +90,7 @@ Use: ListDirectory . (or) \<custom path\>
 ```txt
 Try kill a process in remote computer
 
-Use: KillProcess "\<process name\>"
+Use: KillProcess "<process name>"
 ```
 
 
@@ -98,7 +98,7 @@ Use: KillProcess "\<process name\>"
 ```txt
 Execute a cmd command and let it go, no inputs, no outputs
 
-Use: BlindCmd \<cmd command here\>
+Use: BlindCmd <cmd command here>
 ```
 
 
@@ -106,7 +106,7 @@ Use: BlindCmd \<cmd command here\>
 ```txt
 Upload a local file to remote computer, good for upload your executables and shell scripts
 
-Use: UploadFile "\<local file name\>" "\<remote file name destionation\>"
+Use: UploadFile "<local file name>" "<remote file name destionation>"
 ```
 
 
@@ -114,7 +114,7 @@ Use: UploadFile "\<local file name\>" "\<remote file name destionation\>"
 ```txt
 Get the size of a specific file in remote system
 
-Use: FileSize "\<remote file name\>"
+Use: FileSize "<remote file name>"
 ```
 
 
@@ -122,7 +122,7 @@ Use: FileSize "\<remote file name\>"
 ```txt
 Move a file from source location to a destination location
 
-Use: MoveFile "\<remote file name location\>" "\<remote destination location/<nome do arquivo\>\>"
+Use: MoveFile "<remote file name location>" "<remote destination location/<nome do arquivo>>"
 
 Hint: Is necessary put the file name in the end of destination path, native winapi functions only work in this way
 ```
