@@ -30,24 +30,27 @@ Here is all features that this malware can do in victim computer.
 
 
 ### Beep Beep
+```txt
 Make a default Windows system beep in remote computer
 
 Use: Beep
-
+```
 
 
 ### ListProcess
+```txt
 Return all current process in remote computer
 
 Use: ListProcess
-
+```
 
 
 ### CurrentDirectory
+```txt
 Return the Portal current directory in remote computer
 
 Use: CurrentDirectory
-
+```
 
 
 ### PortalIntegration
