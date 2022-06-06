@@ -83,7 +83,7 @@ Use: ListDirectory . (or) \<custom path\>
 ### KillProcess
 Try kill a process in remote computer
 
-Use KillProcess "\<process name\>"
+Use: KillProcess "\<process name\>"
 
 
 
