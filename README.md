@@ -54,70 +54,78 @@ Use: CurrentDirectory
 
 
 ### PortalIntegration
+```txt
 Make that you enter in remote system and accept cmd commands to make anything
 
 Use: PortalIntegration
-
-
+```
 
 ### FileWrite
+```txt
 Write to a file in remote target
 
 Use: WriteFile \<relative path in remote computer\>
 
 Hint: After send this command (with Python server script) a notepad will pop-up for you write the file text, then you save and press enter in server terminal to send the file content
-
+```
 
 
 ### FileRead 
+```txt
 Allow you to read a file in remote computer and bring the result to your terminal
 
 Use: FileRead "\<relative path to remote file\>"
-
+```
 
 
 ### ListDirectory
+```txt
 List the current directory or any path that you pass as argument
 
 Use: ListDirectory . (or) \<custom path\>
-
+```
 
 
 ### KillProcess
+```txt
 Try kill a process in remote computer
 
 Use: KillProcess "\<process name\>"
-
+```
 
 
 ### BlindCmd
+```txt
 Execute a cmd command and let it go, no inputs, no outputs
 
 Use: BlindCmd \<cmd command here\>
-
+```
 
 
 ### UploadFile
+```txt
 Upload a local file to remote computer, good for upload your executables and shell scripts
 
 Use: UploadFile "\<local file name\>" "\<remote file name destionation\>"
-
+```
 
 
 ### FileSize 
+```txt
 Get the size of a specific file in remote system
 
 Use: FileSize "\<remote file name\>"
-
+```
 
 
 ### MoveFile
+```txt
 Move a file from source location to a destination location
 
 Use: MoveFile "\<remote file name location\>" "\<remote destination location/<nome do arquivo\>\>"
 
 Hint: Is necessary put the file name in the end of destination path, native winapi functions only work in this way
-
+```
 
 
 
