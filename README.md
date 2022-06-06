@@ -9,11 +9,11 @@
 ## My responsability for it
 This is a toy project to me, but can make some damages with a right level, then if you use this code base for anything else that is not about learn, it's YOUR responsability
 
-<br/>
+
 
 ### \<===== Project under developement =====\>
 
-<br/>
+
 
 ## What's this
 Portal is a backdoor malware created in C for windows platform, with some features to enable the attacker troll and hack the possible victim computer
@@ -27,35 +27,35 @@ The Portal program is not completly dependent of the server made in Python, you 
 ## Features of portal backdoor
 Here is all features that this malware can do in victim computer.
 
-<br/>
+
 
 ### Beep Beep
 Make a default Windows system beep in remote computer
 
 Use: Beep
 
-<br/>
+
 
 ### ListProcess
 Return all current process in remote computer
 
 Use: ListProcess
 
-<br/>
+
 
 ### CurrentDirectory
 Return the Portal current directory in remote computer
 
 Use: CurrentDirectory
 
-<br/>
+
 
 ### PortalIntegration
 Make that you enter in remote system and accept cmd commands to make anything
 
 Use: PortalIntegration
 
-<br/>
+
 
 ### FileWrite
 Write to a file in remote target
@@ -64,49 +64,49 @@ Use: WriteFile \<relative path in remote computer\>
 
 Hint: After send this command (with Python server script) a notepad will pop-up for you write the file text, then you save and press enter in server terminal to send the file content
 
-<br/>
+
 
 ### FileRead 
 Allow you to read a file in remote computer and bring the result to your terminal
 
 Use: FileRead "\<relative path to remote file\>"
 
-<br/>
+
 
 ### ListDirectory
 List the current directory or any path that you pass as argument
 
 Use: ListDirectory . (or) \<custom path\>
 
-<br/>
+
 
 ### KillProcess
 Try kill a process in remote computer
 
 Use KillProcess "\<process name\>"
 
-<br/>
+
 
 ### BlindCmd
 Execute a cmd command and let it go, no inputs, no outputs
 
 Use: BlindCmd \<cmd command here\>
 
-<br/>
+
 
 ### UploadFile
 Upload a local file to remote computer, good for upload your executables and shell scripts
 
 Use: UploadFile "\<local file name\>" "\<remote file name destionation\>"
 
-<br/>
+
 
 ### FileSize 
 Get the size of a specific file in remote system
 
 Use: FileSize "\<remote file name\>"
 
-<br/>
+
 
 ### MoveFile
 Move a file from source location to a destination location
