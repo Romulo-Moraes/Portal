@@ -1,5 +1,6 @@
 struct ChildProcessConfigPackage
 {
-    HANDLE *ChildStdinWrite, *ChildStdinRead, *ChildStdoutWrite, *ChildStdoutRead;
+    HANDLE *ChildStdoutReadHandle,*ProcessHandler;
     SOCKET *ClientSocket;
-} ChildConfig;
+    int *ReadProcessThreadFree;
+};

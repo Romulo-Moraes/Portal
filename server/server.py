@@ -10,8 +10,8 @@ def ReceiveData(ClientSocket):
     while True:
         TcpBytes = ""
         TcpBytes = ClientSocket.recv(RECV_BUFFER_SIZE)
-        if(bytes.decode(TcpBytes,"utf8") != ""):
-            print(bytes.decode(TcpBytes,"utf8"),end="")
+        if(bytes.decode(TcpBytes,"ISO-8859-1") != ""):
+            print(bytes.decode(TcpBytes,"ISO-8859-1"),end="")
 
 def main():
     ServerSocket = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);

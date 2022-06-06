@@ -7,11 +7,11 @@
         "structs.h": "c"
     },
     "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#202020",
-        "activityBar.activeBorder": "#0015ff",
-        "activityBar.background": "#000000",
+        "activityBar.activeBackground": "#1a1a1a",
+        "activityBar.activeBorder": "#606020",
+        "activityBar.background": "#1a1a1a",
         "activityBar.foreground": "#e7e7e7",
-        "activityBar.inactiveForeground": "#0b93dc99",
+        "activityBar.inactiveForeground": "#e7e7e799",
         "activityBarBadge.background": "#606020",
         "activityBarBadge.foreground": "#e7e7e7",
         "sash.hoverBorder": "#1a1a1a",
@@ -27,7 +27,7 @@
         "editor.background": "#14141a",
         "tab.activeBackground": "#14141a",
         "editorMarkerNavigation.background": "#000000",
-        "sideBar.background": "#14141a",
+        "sideBar.background": "#14141a"
     },
     "peacock.color": "#000000"
 }
