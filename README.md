@@ -1,6 +1,6 @@
 <div align="center">
     <h1>Portal backdoor</h1>
-    <img width="400px" src="./images/ExampleImage.jpeg">
+    <img width="400px" src="./images/image.png">
     <p>Created by Rômulo Moraes</p>    
 </div>
 
