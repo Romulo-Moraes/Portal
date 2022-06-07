@@ -128,6 +128,6 @@ Use: MoveFile "<remote file name location>" "<remote destination location/<nome 
 Hint: Is necessary put the file name in the end of destination path, native winapi functions only work in this way
 ```
 
-
+## More features coming...
 
 
