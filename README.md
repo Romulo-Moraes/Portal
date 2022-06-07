@@ -17,7 +17,7 @@ This is a toy project to me, but can make some damages with a right level, then 
 
 
 ## What's this
-Portal is a backdoor malware created in C for windows platform, with some features to enable the attacker troll and hack the possible victim computer
+Portal is a backdoor malware created in C for windows platform, with some features to enable the attacker troll and hack the possible victim computer. This is a more project created inspired by the mobile game Hackers : join the cyberwar. Another project inspired by this game is the Battering ram, that's the link: https://github.com/Romulo-Moraes/Battering-ram
 
 ## How its work
 This program has a client (the malware) and the server (that will command the client), the client made in C and server made in Python. A Tcp connection will be maked between both, trading messages to make the Portal playground.
