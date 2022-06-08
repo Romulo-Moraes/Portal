@@ -129,5 +129,27 @@ Hint: Is necessary put the file name in the end of destination path, native wina
 ```
 
 ## More features coming...
+The project is under development, so new features will come up to this repository soon
+
+## How to configure for gameplay
+To change target connection and host bind is easy, in macros/macros.h has HOST_ADDRESS and HOST_PORT, you can change it to dial to any place in internet. In server/server.py has some constants that control the bind address and port, that is the: SERVER_BIND_ADDRESS and SERVER_BIND_PORT, feel free to change them for any valid value.
+
+### Compiling the client C code
+For this project i tried a MINGW that is pretty easy to install and use, but for some cases like Winsockets it sucks, then the best option that i choose is the Microsoft C compiler called as "cl", it comes with the Visual Studio, 2019 in my case, this command is available in Developer Command Prompt and compile with this is as follow:
+```txt
+cl client.c
+```
+Then you rename your file for anything that you wan't
+
+### Interpreting the Python script
+The server script made in python can be executed by a interpreter with Python 3.10.0 (Tested), or later, and execute it is as follow:
+```
+py server.py
+```
+This version of Portal server works better in Windows, because call the "notepad.exe" executable to run "WriteFile" command, but better support will be implemented.
+
+
+
+
 
 
