@@ -61,7 +61,7 @@ Make that you enter in remote system and accept cmd commands to make anything
 Use: PortalIntegration
 ```
 
-### FileWrite
+### WriteFile
 ```txt
 Write to a file in remote target
 
@@ -71,7 +71,7 @@ Hint: After send this command (with Python server script) a notepad will pop-up 
 ```
 
 
-### FileRead 
+### ReadFile
 ```txt
 Allow you to read a file in remote computer and bring the result to your terminal
 

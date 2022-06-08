@@ -31,6 +31,7 @@ void ExecuteFileSize(char *FilePath, SOCKET Connection){
 
         itoa(FileSize,NumberToStringBuffer,10);
 
+        strcat(NumberToStringBuffer,"\n");
         SendDataBack(NumberToStringBuffer, Connection);
 
         fclose(FileToGetSize);
@@ -81,15 +82,16 @@ void ExecuteFileWrite(SOCKET Connection){
     char *TextContent = NULL;
     TextContent = strtok(NULL,"");
     
+
     if(FilePath != NULL && TextContent != NULL && TextSize != 0){
 
-    FILE *FileToWrite = fopen(FilePath,"w");
-    fwrite(TextContent,1,strlen(TextContent),FileToWrite);
-    TextSize = TextSize - strlen(TextContent);
+        FILE *FileToWrite = fopen(FilePath,"w");
+        fwrite(TextContent,1,strlen(TextContent),FileToWrite);
+        TextSize = TextSize - strlen(TextContent);
    
-    while(TextSize != 0){
-        if(TextSize >= 20){
-                recv(Connection,RestOfText,REST_OF_TEXT_BUFFER_SIZE - 1,0);
+        while(TextSize != 0){
+            if(TextSize >= 20){
+                    recv(Connection,RestOfText,REST_OF_TEXT_BUFFER_SIZE - 1,0);
             }
             else{
                 recv(Connection,RestOfText,TextSize,0);
@@ -100,7 +102,9 @@ void ExecuteFileWrite(SOCKET Connection){
         }
         fclose(FileToWrite);
     }
-
+    else{
+        // TODO!!!
+    }
 }
 
 void ExecuteListDirectory(char *OriginPath,SOCKET Connection){
