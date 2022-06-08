@@ -135,7 +135,7 @@ The project is under development, so new features will come up to this repositor
 To change target connection and host bind is easy, in macros/macros.h has HOST_ADDRESS and HOST_PORT, you can change it to dial to any place in internet. In server/server.py has some constants that control the bind address and port, that is the: SERVER_BIND_ADDRESS and SERVER_BIND_PORT, feel free to change them for any valid value.
 
 ### Compiling the client C code
-For this project i tried a MINGW that is pretty easy to install and use, but for some cases like Winsockets it sucks, then the best option that i choose is the Microsoft C compiler called as "cl", it comes with the Visual Studio, 2019 in my case, this command is available in Developer Command Prompt and compile with this is as follow:
+For this project i tried a MINGW that is pretty easy to install and use, but for some cases like Winsockets it sucks, then the best option that i chose is the Microsoft C compiler called as "cl", it comes with the Visual Studio, 2019 in my case, this command is available in Developer Command Prompt and compile with this is as follow:
 ```txt
 cl client.c
 ```
